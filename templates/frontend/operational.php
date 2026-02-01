@@ -27,9 +27,15 @@ defined( 'ABSPATH' ) || exit;
 // Get site branding functions if available.
 $logo_url  = function_exists( 'ds_get_logo_url' ) ? ds_get_logo_url() : '';
 $site_name = function_exists( 'ds_get_site_name' ) ? ds_get_site_name() : get_bloginfo( 'name' );
+
+// Get theme from configuration (supports decision-substrate or op-platform config).
+$ds_config   = get_option( 'decision_substrate_config', array() );
+$op_config   = get_option( 'op_platform_config', array() );
+$theme       = $ds_config['theme'] ?? $op_config['theme'] ?? 'light';
+$theme_class = 'light' === $theme ? '' : 'theme-' . $theme;
 ?>
 
-<div class="min-h-screen bg-ds-bg">
+<div class="min-h-screen bg-ds-bg <?php echo esc_attr( $theme_class ); ?>">
 	<!-- Platform Navigation -->
 	<?php if ( $navigation && $navigation->is_built() ) : ?>
 		<nav class="ds-main-nav bg-ds-nav border-b border-ds-nav-border" aria-label="<?php esc_attr_e( 'Platform navigation', 'op-platform' ); ?>">
