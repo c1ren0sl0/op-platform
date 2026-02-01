@@ -23,9 +23,41 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+// Get site branding functions if available.
+$logo_url  = function_exists( 'ds_get_logo_url' ) ? ds_get_logo_url() : '';
+$site_name = function_exists( 'ds_get_site_name' ) ? ds_get_site_name() : get_bloginfo( 'name' );
 ?>
 
-<div class="op-page">
+<div class="min-h-screen bg-ds-bg">
+	<!-- Platform Navigation -->
+	<?php if ( $navigation && $navigation->is_built() ) : ?>
+		<nav class="ds-main-nav bg-ds-nav border-b border-ds-nav-border" aria-label="<?php esc_attr_e( 'Platform navigation', 'op-platform' ); ?>">
+			<div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+				<!-- Site Branding -->
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center gap-3 py-3 text-ds-nav-text-hover hover:text-ds-primary transition-colors">
+					<?php if ( $logo_url ) : ?>
+						<img src="<?php echo esc_url( $logo_url ); ?>" alt="" class="h-8 w-auto" style="height: 2rem; width: auto;">
+					<?php endif; ?>
+					<span class="text-lg font-semibold"><?php echo esc_html( $site_name ); ?></span>
+				</a>
+
+				<!-- Navigation Items -->
+				<ul class="flex items-center gap-1">
+					<?php foreach ( $navigation->get_items() as $item ) : ?>
+						<?php $is_current = isset( $page ) && $item['route'] === $page->get_route(); ?>
+						<li>
+							<a href="<?php echo esc_url( home_url( $item['route'] ) ); ?>" class="block px-4 py-3 text-sm font-medium transition-colors <?php echo $is_current ? 'bg-ds-nav-active text-ds-primary-text' : 'text-ds-nav-text hover:text-ds-nav-text-hover hover:bg-ds-nav-border'; ?>">
+								<?php echo esc_html( $item['title'] ); ?>
+							</a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</nav>
+	<?php endif; ?>
+
+	<div class="max-w-4xl mx-auto px-4 py-8">
 	<!-- Breadcrumbs -->
 	<?php if ( ! empty( $breadcrumbs ) ) : ?>
 		<nav class="op-breadcrumbs" aria-label="<?php esc_attr_e( 'Breadcrumb', 'op-platform' ); ?>">
@@ -176,4 +208,5 @@ defined( 'ABSPATH' ) || exit;
 			</ul>
 		</div>
 	<?php endif; ?>
-</div>
+	</div><!-- .max-w-4xl -->
+</div><!-- .min-h-screen -->
