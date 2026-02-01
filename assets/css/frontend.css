@@ -1,0 +1,191 @@
+/**
+ * Frontend styles for Operational Platform.
+ *
+ * These are minimal default styles. Themes should override
+ * these with their own styling.
+ */
+
+/* Breadcrumbs */
+.op-breadcrumbs ol {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 20px;
+	font-size: 0.9em;
+}
+
+.op-breadcrumbs li {
+	display: flex;
+	align-items: center;
+}
+
+.op-breadcrumbs li:not(:last-child)::after {
+	content: '/';
+	margin: 0 8px;
+	color: #999;
+}
+
+.op-breadcrumbs a {
+	color: #0073aa;
+	text-decoration: none;
+}
+
+.op-breadcrumbs a:hover {
+	text-decoration: underline;
+}
+
+/* Page Header */
+.op-page-header {
+	margin-bottom: 30px;
+}
+
+.op-page-header h1 {
+	margin: 0 0 10px;
+}
+
+.op-page-description {
+	font-size: 1.1em;
+	color: #666;
+	margin: 0;
+}
+
+/* Content */
+.op-page-content {
+	margin-bottom: 30px;
+}
+
+/* Filters */
+.op-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.op-filter {
+	padding: 8px 12px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background: #fff;
+	font-size: 0.9em;
+}
+
+/* Items Grid */
+.op-items {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 20px;
+	margin-bottom: 30px;
+}
+
+.op-item-card {
+	display: block;
+	padding: 20px;
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	text-decoration: none;
+	color: inherit;
+	transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.op-item-card:hover {
+	border-color: #0073aa;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.op-item-title {
+	margin: 0 0 10px;
+	font-size: 1.1em;
+	color: #333;
+}
+
+.op-item-badges {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.op-badge {
+	display: inline-block;
+	padding: 3px 8px;
+	background: #e9ecef;
+	border-radius: 3px;
+	font-size: 0.8em;
+	color: #495057;
+}
+
+/* Pagination */
+.op-pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 20px 0;
+}
+
+.op-pagination a {
+	color: #0073aa;
+	text-decoration: none;
+}
+
+.op-pagination a:hover {
+	text-decoration: underline;
+}
+
+.op-page-info {
+	color: #666;
+}
+
+/* No Items */
+.op-no-items {
+	text-align: center;
+	color: #666;
+	padding: 40px 20px;
+	background: #f8f9fa;
+	border-radius: 8px;
+}
+
+/* Children */
+.op-children {
+	margin-top: 40px;
+	padding-top: 40px;
+	border-top: 1px solid #e0e0e0;
+}
+
+.op-children h2 {
+	margin: 0 0 20px;
+}
+
+.op-children-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.op-children-list li {
+	padding: 15px 0;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.op-children-list li:last-child {
+	border-bottom: none;
+}
+
+.op-children-list a {
+	font-size: 1.1em;
+	font-weight: 500;
+	color: #0073aa;
+	text-decoration: none;
+}
+
+.op-children-list a:hover {
+	text-decoration: underline;
+}
+
+.op-children-list p {
+	margin: 5px 0 0;
+	color: #666;
+	font-size: 0.9em;
+}
